@@ -1,0 +1,126 @@
+<link rel="import" href="../bower_components/font-roboto/roboto.html">
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-header-panel/core-header-panel.html">
+<link rel="import" href="../bower_components/core-toolbar/core-toolbar.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/core-icons/core-icons.html">
+<link rel="import" href="../bower_components/core-pages/core-pages.html">
+<link rel="import" href="../bower_components/core-drawer-panel/core-drawer-panel.html">
+<link rel="import" href="../bower_components/core-menu/core-menu.html">
+<link rel="import" href="../bower_components/core-menu/core-submenu.html">
+<link rel="import" href="../bower_components/core-item/core-item.html">
+
+<polymer-element name="my-siteHomepage">
+	<template is="auto-binding" id="app">
+		<core-drawer-panel>
+			<core-header-panel drawer>
+				<core-toolbar><core-icon icon="menu"></core-icon>Menü</core-toolbar>
+				<core-menu id="sideMenu">
+					<core-submenu icon="settings" selected="{{page}}"  valueattr="data-category" label="Zeiterfassung">
+						<core-item icon="android" data-category="timeOne" label="Option Eins"></core-item>
+						<core-item icon="cloud" data-category="timeTwo" label="Option Zwei"></core-item>
+					</core-submenu>
+					<core-submenu icon="settings" selected="{{page}}" valueattr="data-category" label="Projektmanagement">
+						<core-item icon="account-balance" data-category="projectOne" label="Option Eins"></core-item>
+						<core-item icon="announcement" data-category="projectTwo" label="Option Zwei"></core-item>
+					</core-submenu>
+					<core-submenu icon="settings" selected="{{page}}" valueattr="data-category" label="Reiseerfassung">
+						<core-item icon="attachment" data-category="travelOne" label="Option Eins"></core-item>
+						<core-item icon="book" data-category="travelTwo" label="Option Zwei"></core-item>
+					</core-submenu>
+					<div style="position:absolute; bottom:10px; text-align:center">
+						<h3>Favorite Templates:</h3>
+						<paper-button raised>Reise USA</paper-button>
+						<paper-button raised>Bewirtung</paper-button>
+						<paper-button raised>Parkschein</paper-button>
+						<paper-button raised>Reise Frankreich</paper-button>
+						<paper-button raised>Reise Deutschland</paper-button>
+					</div>
+				</core-menu>
+			</core-header-panel>
+		
+			<core-header-panel main>
+				<core-toolbar>
+					<paper-icon-button core-drawer-toggle icon="menu"></paper-icon-button>
+					<paper-tabs id="tabs" selected="{{page}}" valueattr="data-category" self-end>
+						<paper-tab data-category="welcome" name="welcome">Willkommen</paper-tab>
+						<paper-tab data-category="trackTravel" name="trackTravel">Reise erfassen</paper-tab>
+						<paper-tab data-category="trackTime" name="trackTime">Zeit erfassen</paper-tab>
+						<paper-tab data-category="templates" name="templates">Vorlagen</paper-tab>
+					</paper-tabs>
+				</core-toolbar>
+					
+				<div class="container" fit layout vertical>
+					<core-pages selected="{{page}}" valueattr="data-category">
+						<section data-category="welcome">
+							<h1>Willkommen</h1>
+							<div>
+								<p>Letzten Monat ({{lastMonth}}) abgegeben:</p>
+								<table width="100%">
+									<tr>
+										<td>Abgegeben</td>
+										<td>Freigegeben</td>
+										<td>Ausbezahlt</td>
+									</tr>
+									<tr>
+										<td>2100</td>
+										<td>1900</td>
+										<td>1900</td>
+									</tr>
+								</table>
+							</div>
+							<div>
+								<my-radialGauge></my-radialGauge>
+							</div>
+						</section>
+						<section data-category="trackTravel">
+							<h1>Reise erfassen</h1>
+							<div>Reise erfassen Content</div>
+						</section>
+						<section data-category="trackTime">
+							<h1>Zeit erfassen</h1>
+							<div>Zeit erfassen Content</div>
+						</section>
+						<section data-category="templates">
+							<h1>Vorlagen</h1>
+							<div>Vorlagen Content</div>
+						</section>
+						<section data-category="timeOption">
+							<h1>Zeiterfassung Parent</h1>
+							<div>Content von der Zeiterfassung</div>
+						</section>
+						<section data-category="timeOne">
+							<h1>Zeiterfassung Option Nummer Eins</h1>
+							<div>Content von der ersten Option!</div>
+						</section>
+						<section data-category="timeTwo">
+							<h1>Zeiterfassung Option Nummer Zwei</h1>
+							<div>Content von der zweiten Option!</div>
+						</section>
+						<section data-category="projectOne">
+							<h1>Projektmanagement Option Nummer Eins</h1>
+							<div>Content von der ersten Option!</div>
+						</section>
+						<section data-category="projectTwo">
+							<h1>Projektmanagement Option Nummer Zwei</h1>
+							<div>Content von der zweiten Option!</div>
+						</section>
+						<section data-category="travelOne">
+							<h1>Reiseerfassung Option Nummer Eins</h1>
+							<div>Content von der ersten Option!</div>
+						</section>
+						<section data-category="travelTwo">
+							<h1>Reiseerfassung Option Nummer Zwei</h1>
+							<div>Conten von der zweiten Option!</div>
+						</section>
+					</core-pages>
+				</div>
+			</core-header-panel>
+		</core-drawer-panel>
+	</template>
+	
+	<script src="app.js"></script>
+</polymer-element>

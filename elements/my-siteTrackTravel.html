@@ -1,0 +1,437 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/font-roboto/roboto.html">
+<link rel="import" href="../bower_components/core-header-panel/core-header-panel.html">
+<link rel="import" href="../bower_components/core-toolbar/core-toolbar.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/core-icons/core-icons.html">
+<link rel="import" href="../bower_components/core-pages/core-pages.html">
+<link rel="import" href="../bower_components/core-drawer-panel/core-drawer-panel.html">
+<link rel="import" href="../bower_components/core-menu/core-menu.html">
+<link rel="import" href="../bower_components/core-menu/core-submenu.html">
+<link rel="import" href="../bower_components/core-item/core-item.html">
+<link rel="import" href="../bower_components/paper-dropdown/paper-dropdown.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-action-dialog.html">
+<link rel="import" href="../bower_components/paper-date-picker/paper-date-picker.html">
+<link rel="import" href="../bower_components/core-input/core-input.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-input/paper-autogrow-textarea.html">
+
+<polymer-element name="my-siteTrackTravel">
+	<template id="tte">
+		<link rel="stylesheet" href="../app.css">
+		<core-drawer-panel>
+			<core-header-panel drawer>
+				<core-toolbar><core-icon icon="menu"></core-icon>Men&uuml</core-toolbar>
+				<core-menu id="sideMenu">
+					<core-item icon="home" label="Hauptseite">
+						<a href="../index.html"></a>
+					</core-item>
+					<core-submenu icon="settings" label="Projektmanagement">
+						<core-item icon="account-balance" label="Option Eins"></core-item>
+						<core-item icon="announcement" label="Option Zwei"></core-item>
+					</core-submenu>
+					<core-submenu icon="settings" label="Zeiterfassung">
+						<core-item icon="attachment" label="Option Eins"></core-item>
+						<core-item icon="book" label="Option Zwei"></core-item>
+					</core-submenu>
+					<div style="position:absolute; bottom:10px; text-align:center">
+						<h3>Favorite Templates:</h3>
+						<paper-button raised>Reise USA</paper-button>
+						<paper-button raised>Bewirtung</paper-button>
+						<paper-button raised>Parkschein</paper-button>
+						<paper-button raised>Reise Frankreich</paper-button>
+						<paper-button raised>Reise Deutschland</paper-button>
+					</div>
+				</core-menu>
+			</core-header-panel>
+		
+			<core-header-panel main>
+				<core-toolbar>
+					<paper-icon-button core-drawer-toggle icon="menu"></paper-icon-button>
+					<paper-tabs id="tabs" selected="{{page}}" valueattr="data-category" self-end>
+						<paper-tab data-category="currTravel" name="currentTravel">Neue Reise</paper-tab>
+						<paper-tab data-category="allTravels" name="allTravels">Alle Reisen</paper-tab>
+					</paper-tabs>
+				</core-toolbar>
+					
+				<div class="container" fit layout vertical>
+					<core-pages selected="{{page}}" valueattr="data-category">
+						<section data-category="currTravel">
+							<div style="border-bottom: 1px solid black">
+								Start:
+								<paper-input label="Jahr" id="stYear" style="width: 50px"></paper-input>
+								<paper-input label="Monat" id="stMonth" style="width: 100px"></paper-input>
+								<paper-input label="Tag" id="stDay" style="width: 50px"></paper-input>
+								<!-- Paper-date-picker:
+								<paper-dropdown-menu label="DatePicker">
+									<paper-dropdown class="dropdown">
+										<core-menu class="menu">
+											<paper-date-picker></paper-date-picker>
+										</core-menu>
+									</paper-dropdown>
+								</paper-dropdown-menu>
+								
+								DropdownMenü:
+								<paper-dropdown-menu label="DatePicker">
+									<paper-dropdown class="dropdown">
+										<core-menu class="menu">
+											<paper-item>20. Februar 2015</paper-item>
+										</core-menu>
+									</paper-dropdown>
+								</paper-dropdown-menu>--><br />
+								Uhrzeit:
+								<paper-input label="Stunde" maxlength="2" style="width: 60px"></paper-input>
+								<paper-input label="Minute" maxlength="2" style="width: 60px"></paper-input>
+								<!-- Alte Version, wird später gelöscht!
+								<paper-dropdown-menu label="Stunde">
+									<paper-dropdown class="dropdown" style="width: 50px">
+										<core-menu class="menu">
+											<paper-item>00</paper-item><br />
+											<paper-item>01</paper-item><br />
+											<paper-item>02</paper-item><br />
+											<paper-item>03</paper-item><br />
+											<paper-item>04</paper-item><br />
+											<paper-item>05</paper-item><br />
+											<paper-item>06</paper-item><br />
+											<paper-item>07</paper-item><br />
+											<paper-item>08</paper-item><br />
+											<paper-item>09</paper-item><br />
+											<paper-item>10</paper-item><br />
+											<paper-item>11</paper-item><br />
+											<paper-item>12</paper-item><br />
+											<paper-item>13</paper-item><br />
+											<paper-item>14</paper-item><br />
+											<paper-item>15</paper-item><br />
+											<paper-item>16</paper-item><br />
+											<paper-item>17</paper-item><br />
+											<paper-item>18</paper-item><br />
+											<paper-item>19</paper-item><br />
+											<paper-item>20</paper-item><br />
+											<paper-item>21</paper-item><br />
+											<paper-item>22</paper-item><br />
+											<paper-item>23</paper-item>
+										</core-menu>
+									</paper-dropdown>
+								</paper-dropdown-menu>
+								<paper-dropdown-menu label="Minute">
+									<paper-dropdown class="dropdown" style="width: 50px">
+										<core-menu class="menu">
+											<paper-item>00</paper-item><br />
+											<paper-item>01</paper-item><br />
+											<paper-item>02</paper-item><br />
+											<paper-item>03</paper-item><br />
+											<paper-item>04</paper-item><br />
+											<paper-item>05</paper-item><br />
+											<paper-item>06</paper-item><br />
+											<paper-item>07</paper-item><br />
+											<paper-item>08</paper-item><br />
+											<paper-item>09</paper-item><br />
+											<paper-item>10</paper-item><br />
+											<paper-item>11</paper-item><br />
+											<paper-item>12</paper-item><br />
+											<paper-item>13</paper-item><br />
+											<paper-item>14</paper-item><br />
+											<paper-item>15</paper-item><br />
+											<paper-item>16</paper-item><br />
+											<paper-item>17</paper-item><br />
+											<paper-item>18</paper-item><br />
+											<paper-item>19</paper-item><br />
+											<paper-item>20</paper-item><br />
+											<paper-item>21</paper-item><br />
+											<paper-item>22</paper-item><br />
+											<paper-item>23</paper-item><br />
+											<paper-item>24</paper-item><br />
+											<paper-item>25</paper-item><br />
+											<paper-item>26</paper-item><br />
+											<paper-item>27</paper-item><br />
+											<paper-item>28</paper-item><br />
+											<paper-item>29</paper-item><br />
+											<paper-item>30</paper-item><br />
+											<paper-item>31</paper-item><br />
+											<paper-item>32</paper-item><br />
+											<paper-item>33</paper-item><br />
+											<paper-item>34</paper-item><br />
+											<paper-item>35</paper-item><br />
+											<paper-item>36</paper-item><br />
+											<paper-item>37</paper-item><br />
+											<paper-item>38</paper-item><br />
+											<paper-item>39</paper-item><br />
+											<paper-item>40</paper-item><br />
+											<paper-item>41</paper-item><br />
+											<paper-item>42</paper-item><br />
+											<paper-item>43</paper-item><br />
+											<paper-item>44</paper-item><br />
+											<paper-item>45</paper-item><br />
+											<paper-item>46</paper-item><br />
+											<paper-item>47</paper-item><br />
+											<paper-item>48</paper-item><br />
+											<paper-item>49</paper-item><br />
+											<paper-item>50</paper-item><br />
+											<paper-item>51</paper-item><br />
+											<paper-item>52</paper-item><br />
+											<paper-item>53</paper-item><br />
+											<paper-item>54</paper-item><br />
+											<paper-item>55</paper-item><br />
+											<paper-item>56</paper-item><br />
+											<paper-item>57</paper-item><br />
+											<paper-item>58</paper-item><br />
+											<paper-item>59</paper-item>
+										</core-menu>
+									</paper-dropdown>
+								</paper-dropdown-menu>-->
+							</div>
+							<div style="border-top: 1px solid black; border-bottom: 1px solid black">
+								Ende:
+								<paper-input label="Jahr" style="width: 50px"></paper-input>
+								<paper-input label="Monat" style="width: 100px"></paper-input>
+								<paper-input label="Tag" style="width: 50px"></paper-input>
+								<!--<paper-dropdown-menu label="DatePicker">
+									<paper-dropdown class="dropdown">
+										<core-menu class="menu">
+											<paper-item>20. Februar 2015</paper-item>
+										</core-menu>
+									</paper-dropdown>
+								</paper-dropdown-menu>--><br />
+								Uhrzeit:
+								<paper-input label="Stunde" style="width: 60px"></paper-input>
+								<paper-input label="Minute" style="width: 60px"></paper-input>
+								<!--<paper-dropdown-menu label="Stunde">
+									<paper-dropdown class="dropdown" style="width: 50px">
+										<core-menu class="menu">
+											<paper-item>00</paper-item><br />
+											<paper-item>01</paper-item><br />
+											<paper-item>02</paper-item><br />
+											<paper-item>03</paper-item><br />
+											<paper-item>04</paper-item><br />
+											<paper-item>05</paper-item><br />
+											<paper-item>06</paper-item><br />
+											<paper-item>07</paper-item><br />
+											<paper-item>08</paper-item><br />
+											<paper-item>09</paper-item><br />
+											<paper-item>10</paper-item><br />
+											<paper-item>11</paper-item><br />
+											<paper-item>12</paper-item><br />
+											<paper-item>13</paper-item><br />
+											<paper-item>14</paper-item><br />
+											<paper-item>15</paper-item><br />
+											<paper-item>16</paper-item><br />
+											<paper-item>17</paper-item><br />
+											<paper-item>18</paper-item><br />
+											<paper-item>19</paper-item><br />
+											<paper-item>20</paper-item><br />
+											<paper-item>21</paper-item><br />
+											<paper-item>22</paper-item><br />
+											<paper-item>23</paper-item>
+										</core-menu>
+									</paper-dropdown>
+								</paper-dropdown-menu>
+								<paper-dropdown-menu label="Minute">
+									<paper-dropdown class="dropdown" style="width: 50px">
+										<core-menu class="menu">
+											<paper-item>00</paper-item><br />
+											<paper-item>01</paper-item><br />
+											<paper-item>02</paper-item><br />
+											<paper-item>03</paper-item><br />
+											<paper-item>04</paper-item><br />
+											<paper-item>05</paper-item><br />
+											<paper-item>06</paper-item><br />
+											<paper-item>07</paper-item><br />
+											<paper-item>08</paper-item><br />
+											<paper-item>09</paper-item><br />
+											<paper-item>10</paper-item><br />
+											<paper-item>11</paper-item><br />
+											<paper-item>12</paper-item><br />
+											<paper-item>13</paper-item><br />
+											<paper-item>14</paper-item><br />
+											<paper-item>15</paper-item><br />
+											<paper-item>16</paper-item><br />
+											<paper-item>17</paper-item><br />
+											<paper-item>18</paper-item><br />
+											<paper-item>19</paper-item><br />
+											<paper-item>20</paper-item><br />
+											<paper-item>21</paper-item><br />
+											<paper-item>22</paper-item><br />
+											<paper-item>23</paper-item><br />
+											<paper-item>24</paper-item><br />
+											<paper-item>25</paper-item><br />
+											<paper-item>26</paper-item><br />
+											<paper-item>27</paper-item><br />
+											<paper-item>28</paper-item><br />
+											<paper-item>29</paper-item><br />
+											<paper-item>30</paper-item><br />
+											<paper-item>31</paper-item><br />
+											<paper-item>32</paper-item><br />
+											<paper-item>33</paper-item><br />
+											<paper-item>34</paper-item><br />
+											<paper-item>35</paper-item><br />
+											<paper-item>36</paper-item><br />
+											<paper-item>37</paper-item><br />
+											<paper-item>38</paper-item><br />
+											<paper-item>39</paper-item><br />
+											<paper-item>40</paper-item><br />
+											<paper-item>41</paper-item><br />
+											<paper-item>42</paper-item><br />
+											<paper-item>43</paper-item><br />
+											<paper-item>44</paper-item><br />
+											<paper-item>45</paper-item><br />
+											<paper-item>46</paper-item><br />
+											<paper-item>47</paper-item><br />
+											<paper-item>48</paper-item><br />
+											<paper-item>49</paper-item><br />
+											<paper-item>50</paper-item><br />
+											<paper-item>51</paper-item><br />
+											<paper-item>52</paper-item><br />
+											<paper-item>53</paper-item><br />
+											<paper-item>54</paper-item><br />
+											<paper-item>55</paper-item><br />
+											<paper-item>56</paper-item><br />
+											<paper-item>57</paper-item><br />
+											<paper-item>58</paper-item><br />
+											<paper-item>59</paper-item>
+										</core-menu>
+									</paper-dropdown>
+								</paper-dropdown-menu>-->
+							</div>
+							<div style="border-top: 1px solid black">
+								Ort:
+								<paper-input label="Zielort"></paper-input>
+							</div>
+							<br />
+							<div>
+								Zweck:<br />
+								<paper-autogrow-textarea id="lblZweck" rows="3">
+									<textarea id="txtZweck" style="border: 1px solid black; width: 80%"></textarea>
+								</paper-autogrow-textarea>
+							</div>
+							<br />
+							<div>
+								Mitarbeiter:
+								<paper-input label="Name des Mitarbeiters"></paper-input>
+							</div>
+							<br />
+							<div>
+								Spesen:
+								
+							</div>
+							
+							<div style="margin-top: 50px">
+								<table class="daytable">
+									<tr class="dayrow">
+										<td class="day">
+											<p>1. Tag:</p>
+										</td>
+										<td class="daybuttons">
+											<paper-button class="toggle" toggle="" raised>Fr&uumlh</paper-button>
+											<paper-button class="toggle" toggle="" raised>Mittag</paper-button>
+											<paper-button class="toggle" toggle="" raised>Abend</paper-button>
+											<paper-button class="toggle" toggle="" raised>N&aumlchtigung</paper-button>
+											<br />
+											<section on-tap="{{toggleDialog1}}">
+												<paper-button raised>Beleg</paper-button>
+												<paper-action-dialog backdrop autoCloseDisabled layered="false">
+													<p>Test Text, um zu sehen, ob der Dialog funktioniert.</p>
+													<paper-button affirmativ autofocus>Tap me to close</paper-button>
+												</paper-action-dialog>
+												<paper-button raised>Grenz&uumlbersch.</paper-button>
+											</section>
+										</td>
+									</tr>
+								</table>
+							</div>
+							<div style="margin-top: 20px; margin-bottom: 20px">
+								<paper-button style="font-size: 16px" onclick="SaveTravel()">Reise anlegen</paper-button>
+								<div id="output">
+									... noch nichts ...
+								</div>
+							</div>
+						</section>
+						<section data-category="allTravels">
+							<div>
+								<table border="1" id="dataTable" style="width: 100%">
+									<tr>
+										<th colspan="3">
+											Start
+										</th>
+										<th>
+											-
+										</th>
+										<th colspan="3">
+											Ende
+										</th>
+										<th>
+											Ort
+										</th>
+									</tr>
+									<tr>
+										<td>
+											2015
+										</td>
+										<td>
+											Januar
+										</td>
+										<td>
+											28
+										</td>
+										<td>
+											-
+										</td>
+										<td>
+											2015
+										</td>
+										<td>
+											Februar
+										</td>
+										<td>
+											10
+										</td>
+										<td>
+											Wien
+										</td>
+									</tr>
+									<script>
+										AllTravel()
+									</script>
+								</table>
+							</div>
+						</section>
+					</core-pages>
+				</div>
+			</core-header-panel>
+		</core-drawer-panel>
+	</template>
+	
+	<!-- Script für den Dialog für Beleg oder Grenzüberschreitung
+	<script>
+		var scrope = document.querySelector('template');
+		
+		scope.toggleDialog1 = funtion(e) {
+			if (e.target.localName != 'button') {
+				return;
+			}
+			var d = e.target.nextElementSibling;
+			if (!d) {
+				return;
+			}
+			d.toggle();
+		};
+		
+		scope.transitions = [
+			'core-transition-center',
+			'core-transition-top',
+			'core-transition-bottom',
+			'core-transition-left',
+			'core-transition-right'
+		];
+	</script>-->
+	
+	<script>
+		Polymer({
+			
+		});
+	</script>	
+</polymer-element>

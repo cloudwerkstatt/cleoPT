@@ -1,0 +1,92 @@
+html,body {
+    height: 100%;
+    margin: 0;
+    background-color: #E5E5E5;
+    font-family: 'RobotoDraft', sans-serif;
+  }
+  
+  td {
+	text-align: center;
+}
+  
+  core-header-panel {
+	height: 100%;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+  }
+	
+  core-toolbar {
+	background: #03a9f4;
+	color: white;
+  }
+
+  paper-button {
+	background-color: #03A9F4;
+	color: white;
+	font-size: 14px;
+	margin: 5px;
+  }
+  
+  my-siteTrackTravel {
+	font-family: 'RobotoDraft', sans-serif;
+  }
+  
+  my-radialGauge {
+	height: 100%;
+	width: 80%;
+  }
+  
+  [main] {
+	background-color: #F9F9F9;
+  }
+  
+  [drawer] {
+	background-color: #FFFFFF;
+  }
+  
+  #tabs {
+	width: 100%;
+	margin: 0;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	text-transform: uppercase;
+  }
+  
+.headButton {
+	font-size: 60%;
+	}
+  
+  .container {
+    width: 80%;
+    margin: 50px auto;
+  }
+  
+  .daytable {
+	border-collapse: collapse;
+  }
+  
+  .dayrow {
+	border-top: solid thin;
+  }
+  
+  .day{
+	width: 50px;
+	text-align: center;
+  }
+  
+  .toggle {
+	background-color: #F9F9F9;
+	color: black;
+	font-size: 12px;
+  }
+  
+  @media (min-width: 481px) {
+    #tabs {
+      width: 650px;
+    }
+    .container {
+      width: 400px;
+    }
+  }

@@ -20,6 +20,8 @@
 <link rel="import" href="../bower_components/core-input/core-input.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../bower_components/paper-input/paper-autogrow-textarea.html">
+<link rel="import" href="../bower_components/core-collapse/core-collapse.html">
+<link rel="import" href="../bower_components/core-label/core-label.html">
 
 <polymer-element name="my-siteTrackTravel">
 	<template id="tte">
@@ -54,7 +56,7 @@
 				<core-toolbar>
 					<paper-icon-button core-drawer-toggle icon="menu"></paper-icon-button>
 					<paper-tabs id="tabs" selected="{{page}}" valueattr="data-category" self-end>
-						<paper-tab data-category="currTravel" name="currentTravel">Neue Reise</paper-tab>
+						<paper-tab data-category="currTravel" name="currentTravel" id="currTravel">Neue Reise</paper-tab>
 						<paper-tab data-category="allTravels" name="allTravels">Alle Reisen</paper-tab>
 					</paper-tabs>
 				</core-toolbar>
@@ -65,262 +67,49 @@
 							<div style="border-bottom: 1px solid black">
 								Start:
 								<paper-input label="Jahr" id="stYear" style="width: 50px"></paper-input>
-								<paper-input label="Monat" id="stMonth" style="width: 100px"></paper-input>
+								<paper-input label="Monat" id="stMonth" style="width: 50px"></paper-input>
 								<paper-input label="Tag" id="stDay" style="width: 50px"></paper-input>
-								<!-- Paper-date-picker:
-								<paper-dropdown-menu label="DatePicker">
-									<paper-dropdown class="dropdown">
-										<core-menu class="menu">
-											<paper-date-picker></paper-date-picker>
-										</core-menu>
-									</paper-dropdown>
-								</paper-dropdown-menu>
-								
-								DropdownMenü:
-								<paper-dropdown-menu label="DatePicker">
-									<paper-dropdown class="dropdown">
-										<core-menu class="menu">
-											<paper-item>20. Februar 2015</paper-item>
-										</core-menu>
-									</paper-dropdown>
-								</paper-dropdown-menu>--><br />
+								<br />
 								Uhrzeit:
-								<paper-input label="Stunde" maxlength="2" style="width: 60px"></paper-input>
-								<paper-input label="Minute" maxlength="2" style="width: 60px"></paper-input>
-								<!-- Alte Version, wird später gelöscht!
-								<paper-dropdown-menu label="Stunde">
-									<paper-dropdown class="dropdown" style="width: 50px">
-										<core-menu class="menu">
-											<paper-item>00</paper-item><br />
-											<paper-item>01</paper-item><br />
-											<paper-item>02</paper-item><br />
-											<paper-item>03</paper-item><br />
-											<paper-item>04</paper-item><br />
-											<paper-item>05</paper-item><br />
-											<paper-item>06</paper-item><br />
-											<paper-item>07</paper-item><br />
-											<paper-item>08</paper-item><br />
-											<paper-item>09</paper-item><br />
-											<paper-item>10</paper-item><br />
-											<paper-item>11</paper-item><br />
-											<paper-item>12</paper-item><br />
-											<paper-item>13</paper-item><br />
-											<paper-item>14</paper-item><br />
-											<paper-item>15</paper-item><br />
-											<paper-item>16</paper-item><br />
-											<paper-item>17</paper-item><br />
-											<paper-item>18</paper-item><br />
-											<paper-item>19</paper-item><br />
-											<paper-item>20</paper-item><br />
-											<paper-item>21</paper-item><br />
-											<paper-item>22</paper-item><br />
-											<paper-item>23</paper-item>
-										</core-menu>
-									</paper-dropdown>
-								</paper-dropdown-menu>
-								<paper-dropdown-menu label="Minute">
-									<paper-dropdown class="dropdown" style="width: 50px">
-										<core-menu class="menu">
-											<paper-item>00</paper-item><br />
-											<paper-item>01</paper-item><br />
-											<paper-item>02</paper-item><br />
-											<paper-item>03</paper-item><br />
-											<paper-item>04</paper-item><br />
-											<paper-item>05</paper-item><br />
-											<paper-item>06</paper-item><br />
-											<paper-item>07</paper-item><br />
-											<paper-item>08</paper-item><br />
-											<paper-item>09</paper-item><br />
-											<paper-item>10</paper-item><br />
-											<paper-item>11</paper-item><br />
-											<paper-item>12</paper-item><br />
-											<paper-item>13</paper-item><br />
-											<paper-item>14</paper-item><br />
-											<paper-item>15</paper-item><br />
-											<paper-item>16</paper-item><br />
-											<paper-item>17</paper-item><br />
-											<paper-item>18</paper-item><br />
-											<paper-item>19</paper-item><br />
-											<paper-item>20</paper-item><br />
-											<paper-item>21</paper-item><br />
-											<paper-item>22</paper-item><br />
-											<paper-item>23</paper-item><br />
-											<paper-item>24</paper-item><br />
-											<paper-item>25</paper-item><br />
-											<paper-item>26</paper-item><br />
-											<paper-item>27</paper-item><br />
-											<paper-item>28</paper-item><br />
-											<paper-item>29</paper-item><br />
-											<paper-item>30</paper-item><br />
-											<paper-item>31</paper-item><br />
-											<paper-item>32</paper-item><br />
-											<paper-item>33</paper-item><br />
-											<paper-item>34</paper-item><br />
-											<paper-item>35</paper-item><br />
-											<paper-item>36</paper-item><br />
-											<paper-item>37</paper-item><br />
-											<paper-item>38</paper-item><br />
-											<paper-item>39</paper-item><br />
-											<paper-item>40</paper-item><br />
-											<paper-item>41</paper-item><br />
-											<paper-item>42</paper-item><br />
-											<paper-item>43</paper-item><br />
-											<paper-item>44</paper-item><br />
-											<paper-item>45</paper-item><br />
-											<paper-item>46</paper-item><br />
-											<paper-item>47</paper-item><br />
-											<paper-item>48</paper-item><br />
-											<paper-item>49</paper-item><br />
-											<paper-item>50</paper-item><br />
-											<paper-item>51</paper-item><br />
-											<paper-item>52</paper-item><br />
-											<paper-item>53</paper-item><br />
-											<paper-item>54</paper-item><br />
-											<paper-item>55</paper-item><br />
-											<paper-item>56</paper-item><br />
-											<paper-item>57</paper-item><br />
-											<paper-item>58</paper-item><br />
-											<paper-item>59</paper-item>
-										</core-menu>
-									</paper-dropdown>
-								</paper-dropdown-menu>-->
+								<paper-input label="Stunde" id="stHour" maxlength="2" style="width: 60px"></paper-input>
+								<paper-input label="Minute" id="stMinute" maxlength="2" style="width: 60px"></paper-input>
 							</div>
 							<div style="border-top: 1px solid black; border-bottom: 1px solid black">
 								Ende:
-								<paper-input label="Jahr" style="width: 50px"></paper-input>
-								<paper-input label="Monat" style="width: 100px"></paper-input>
-								<paper-input label="Tag" style="width: 50px"></paper-input>
-								<!--<paper-dropdown-menu label="DatePicker">
-									<paper-dropdown class="dropdown">
-										<core-menu class="menu">
-											<paper-item>20. Februar 2015</paper-item>
-										</core-menu>
-									</paper-dropdown>
-								</paper-dropdown-menu>--><br />
+								<paper-input label="Jahr" id="endYear" style="width: 50px"></paper-input>
+								<paper-input label="Monat" id="endMonth" style="width: 50px"></paper-input>
+								<paper-input label="Tag" id="endDay" style="width: 50px"></paper-input>
+								<br />
 								Uhrzeit:
-								<paper-input label="Stunde" style="width: 60px"></paper-input>
-								<paper-input label="Minute" style="width: 60px"></paper-input>
-								<!--<paper-dropdown-menu label="Stunde">
-									<paper-dropdown class="dropdown" style="width: 50px">
-										<core-menu class="menu">
-											<paper-item>00</paper-item><br />
-											<paper-item>01</paper-item><br />
-											<paper-item>02</paper-item><br />
-											<paper-item>03</paper-item><br />
-											<paper-item>04</paper-item><br />
-											<paper-item>05</paper-item><br />
-											<paper-item>06</paper-item><br />
-											<paper-item>07</paper-item><br />
-											<paper-item>08</paper-item><br />
-											<paper-item>09</paper-item><br />
-											<paper-item>10</paper-item><br />
-											<paper-item>11</paper-item><br />
-											<paper-item>12</paper-item><br />
-											<paper-item>13</paper-item><br />
-											<paper-item>14</paper-item><br />
-											<paper-item>15</paper-item><br />
-											<paper-item>16</paper-item><br />
-											<paper-item>17</paper-item><br />
-											<paper-item>18</paper-item><br />
-											<paper-item>19</paper-item><br />
-											<paper-item>20</paper-item><br />
-											<paper-item>21</paper-item><br />
-											<paper-item>22</paper-item><br />
-											<paper-item>23</paper-item>
-										</core-menu>
-									</paper-dropdown>
-								</paper-dropdown-menu>
-								<paper-dropdown-menu label="Minute">
-									<paper-dropdown class="dropdown" style="width: 50px">
-										<core-menu class="menu">
-											<paper-item>00</paper-item><br />
-											<paper-item>01</paper-item><br />
-											<paper-item>02</paper-item><br />
-											<paper-item>03</paper-item><br />
-											<paper-item>04</paper-item><br />
-											<paper-item>05</paper-item><br />
-											<paper-item>06</paper-item><br />
-											<paper-item>07</paper-item><br />
-											<paper-item>08</paper-item><br />
-											<paper-item>09</paper-item><br />
-											<paper-item>10</paper-item><br />
-											<paper-item>11</paper-item><br />
-											<paper-item>12</paper-item><br />
-											<paper-item>13</paper-item><br />
-											<paper-item>14</paper-item><br />
-											<paper-item>15</paper-item><br />
-											<paper-item>16</paper-item><br />
-											<paper-item>17</paper-item><br />
-											<paper-item>18</paper-item><br />
-											<paper-item>19</paper-item><br />
-											<paper-item>20</paper-item><br />
-											<paper-item>21</paper-item><br />
-											<paper-item>22</paper-item><br />
-											<paper-item>23</paper-item><br />
-											<paper-item>24</paper-item><br />
-											<paper-item>25</paper-item><br />
-											<paper-item>26</paper-item><br />
-											<paper-item>27</paper-item><br />
-											<paper-item>28</paper-item><br />
-											<paper-item>29</paper-item><br />
-											<paper-item>30</paper-item><br />
-											<paper-item>31</paper-item><br />
-											<paper-item>32</paper-item><br />
-											<paper-item>33</paper-item><br />
-											<paper-item>34</paper-item><br />
-											<paper-item>35</paper-item><br />
-											<paper-item>36</paper-item><br />
-											<paper-item>37</paper-item><br />
-											<paper-item>38</paper-item><br />
-											<paper-item>39</paper-item><br />
-											<paper-item>40</paper-item><br />
-											<paper-item>41</paper-item><br />
-											<paper-item>42</paper-item><br />
-											<paper-item>43</paper-item><br />
-											<paper-item>44</paper-item><br />
-											<paper-item>45</paper-item><br />
-											<paper-item>46</paper-item><br />
-											<paper-item>47</paper-item><br />
-											<paper-item>48</paper-item><br />
-											<paper-item>49</paper-item><br />
-											<paper-item>50</paper-item><br />
-											<paper-item>51</paper-item><br />
-											<paper-item>52</paper-item><br />
-											<paper-item>53</paper-item><br />
-											<paper-item>54</paper-item><br />
-											<paper-item>55</paper-item><br />
-											<paper-item>56</paper-item><br />
-											<paper-item>57</paper-item><br />
-											<paper-item>58</paper-item><br />
-											<paper-item>59</paper-item>
-										</core-menu>
-									</paper-dropdown>
-								</paper-dropdown-menu>-->
+								<paper-input label="Stunde" id="endHour" style="width: 60px"></paper-input>
+								<paper-input label="Minute" id="endMinute" style="width: 60px"></paper-input>
 							</div>
 							<div style="border-top: 1px solid black">
 								Ort:
-								<paper-input label="Zielort"></paper-input>
+								<paper-input label="Zielort" id="location"></paper-input>
 							</div>
 							<br />
 							<div>
 								Zweck:<br />
-								<paper-autogrow-textarea id="lblZweck" rows="3">
-									<textarea id="txtZweck" style="border: 1px solid black; width: 80%"></textarea>
+								<paper-autogrow-textarea id="lblPurpose" rows="3">
+									<textarea id="txtPurpose" style="border: 1px solid black; width: 80%"></textarea>
 								</paper-autogrow-textarea>
 							</div>
 							<br />
 							<div>
 								Mitarbeiter:
-								<paper-input label="Name des Mitarbeiters"></paper-input>
+								<paper-input label="Name des Mitarbeiters" id="mitarbeiter"></paper-input>
 							</div>
 							<br />
 							<div>
 								Spesen:
-								
+								<core-label id="expenses">&#8364</core-label>
 							</div>
 							
 							<div style="margin-top: 50px">
-								<table class="daytable">
+								<table class="daytable" id="daytable">
+									<!-- Wird über JS eingefügt!
+									
 									<tr class="dayrow">
 										<td class="day">
 											<p>1. Tag:</p>
@@ -340,64 +129,125 @@
 												<paper-button raised>Grenz&uumlbersch.</paper-button>
 											</section>
 										</td>
-									</tr>
+									</tr>-->
 								</table>
 							</div>
 							<div style="margin-top: 20px; margin-bottom: 20px">
-								<paper-button style="font-size: 16px" onclick="SaveTravel()">Reise anlegen</paper-button>
-								<div id="output">
-									... noch nichts ...
-								</div>
+								<paper-button style="font-size: 16px" on-click="{{saveTravel}}">Reise anlegen</paper-button>
 							</div>
 						</section>
+						
+						
 						<section data-category="allTravels">
-							<div>
-								<table border="1" id="dataTable" style="width: 100%">
-									<tr>
-										<th colspan="3">
-											Start
-										</th>
-										<th>
-											-
-										</th>
-										<th colspan="3">
-											Ende
-										</th>
-										<th>
-											Ort
-										</th>
-									</tr>
-									<tr>
-										<td>
-											2015
-										</td>
-										<td>
-											Januar
-										</td>
-										<td>
-											28
-										</td>
-										<td>
-											-
-										</td>
-										<td>
-											2015
-										</td>
-										<td>
-											Februar
-										</td>
-										<td>
-											10
-										</td>
-										<td>
-											Wien
-										</td>
-									</tr>
-									<script>
-										AllTravel()
-									</script>
-								</table>
+							
+							<div class="heading" on-click="{{toggle1}}">
+								Udo
 							</div>
+							<core-collapse id="collapse">
+								<div class="collapseContent">
+									<div class="innerHeading" on-click="{{toggleUdoReise1}}">
+										23.2.2015 - 25.2.2015 | Innsbruck | &#8364 72,60
+									</div>
+									<core-collapse id="UdoReise1">
+										<div class="collapseContent">
+											Start: 23.2.2015
+											<br />
+											Uhrzeit: 08:00 Uhr
+											<br /><br />
+											Ende: 25.2.2015
+											<br />
+											Uhrzeit: 16:30 Uhr
+											<br /><br />
+											Ort: Innsbruck
+											<br /><br />
+											Zweck: <br />
+											Swarovski
+											<br /><br />
+											Spesen: &#8364 72,60
+										</div>
+									</core-collapse>
+									<br />
+									<div class="innerHeading" on-click="{{toggleUdoReise2}}">
+										9.2.2015 - 12.2.2015 | Tamsweg | &#8364 94,60
+									</div>
+									<core-collapse id="UdoReise2">
+										<div class="collapseContent">
+										Start: 9.2.2015
+											<br />
+											Uhrzeit: 08:00 Uhr
+											<br /><br />
+											Ende: 12.2.2015
+											<br />
+											Uhrzeit: 14:30 Uhr
+											<br /><br />
+											Ort: Tamsweg
+											<br /><br />
+											Zweck: <br />
+											Hackathon Salzburg
+											<br /><br />
+											Spesen: &#8364 94,60
+										</div>
+									</core-collapse>
+									<br />
+									<div class="innerHeading" on-click="{{toggleUdoReise3}}">
+										2.2.2015 - 2.2.2015 | Klagenfurt | &#8364 24,20
+									</div>
+									<core-collapse id="UdoReise3">
+										<div class="collapseContent">
+										Start: 2.2.2015
+											<br />
+											Uhrzeit: 08:00 Uhr
+											<br /><br />
+											Ende: 2.2.2015
+											<br />
+											Uhrzeit: 18:15 Uhr
+											<br /><br />
+											Ort: Klagenfurt
+											<br /><br />
+											Zweck: <br />
+											Projektpr&aumlsentation
+											<br /><br />
+											Spesen: &#8364 24,20
+										</div>
+									</core-collapse>
+								</div>
+							</core-collapse>
+							
+							<br />
+							
+							<div class="heading" on-click="{{toggle2}}">
+								Lambert
+							</div>
+							<core-collapse id="collapse2">
+								<div class="collapseContent">
+									<div class="innerHeading" on-click="{{toggleLambertReise1}}">
+										19.2.2015 - 20.2.2015 | Wr. Neustadt | &#8364 41,80
+									</div>
+									<core-collapse id="LambertReise1">
+										<div class="collapseContent">
+										Start: 19.2.2015
+											<br />
+											Uhrzeit: 08:00 Uhr
+											<br /><br />
+											Ende: 20.2.2015
+											<br />
+											Uhrzeit: 14:15 Uhr
+											<br /><br />
+											Ort: Wr. Neustadt
+											<br /><br />
+											Zweck: <br />
+											Chimera Pr&aumlsentation
+											<br /><br />
+											Spesen: &#8364 41,80
+										</div>
+									</core-collapse>
+								</div>
+							</core-collapse>
+							
+							<script>
+								
+								//AllTravel()
+							</script>
 						</section>
 					</core-pages>
 				</div>
@@ -431,7 +281,157 @@
 	
 	<script>
 		Polymer({
-			
+			ready: function() {
+				var dateToday = new Date();
+				
+				//var date2 = new Date(2015,1,27,16,0,0);
+				
+				/*Get 1 day/hour/minute in milliseconds
+				var one_day=1000*60*60*24;
+				var one_hour=1000*60*60;
+				var one_minute=1000*60;
+				// Convert both dates to milliseconds
+				var date1_ms = date1.getTime();
+				var date2_ms = date2.getTime();
+				// Calculate the difference in milliseconds
+				var difference_ms = date2_ms - date1_ms;
+				// Convert back to days and return
+				console.log(Math.round(difference_ms/one_day));
+				console.log(date1);
+				console.log(date2);
+				console.log(Math.round(difference_ms/one_hour));
+				console.log(date1.getDate());
+				console.log(dateToday.getFullYear());*/
+				this.$.stYear.value = dateToday.getFullYear();
+				this.$.stMonth.value = dateToday.getMonth()+1;
+				this.$.stDay.value = dateToday.getDate();
+				this.$.stHour.value = dateToday.getHours();
+				this.$.stMinute.value = dateToday.getMinutes();
+				this.$.endYear.value = dateToday.getFullYear();
+				this.$.endMonth.value = dateToday.getMonth()+1;
+				this.$.endDay.value = dateToday.getDate()+1;
+				this.$.endHour.value = 00;
+				this.$.endMinute.value = 00;
+			},
+			saveTravel: function() {
+				var stYear, stMonth, stDay, stHour, stMinute;
+				var endYear, endMonth, endDay, endHour, endMinute;
+				var expenses, totalDays, totalHours, tagGeldSatz, stTagGeld, endTagGeld;
+				
+				stYear = this.$.stYear.value;
+				stMonth = this.$.stMonth.value;
+				stDay = this.$.stDay.value;
+				stHour = this.$.stHour.value;
+				stMinute = this.$.stMinute.value;
+				endYear = this.$.endYear.value;
+				endMonth = this.$.endMonth.value;
+				endDay = this.$.endDay.value;
+				endHour = this.$.endHour.value;
+				endMinute = this.$.endMinute.value;
+				
+				//Get 1 day/hour/minute in milliseconds
+				var one_day=1000*60*60*24;
+				var one_hour=1000*60*60;
+				var one_minute=1000*60;
+				
+				var dateStart = new Date(stYear,stMonth-1,stDay,stHour,stMinute,0);
+				var dateEnd = new Date(endYear,endMonth-1,endDay,endHour,endMinute,0);
+				
+				var dateStart_ms = dateStart.getTime();
+				var dateEnd_ms = dateEnd.getTime();
+				
+				var difference_ms = dateEnd_ms - dateStart_ms;
+				
+				//Gibt den derzeitigen Tagesgeld Satz an, sollte bei Änderungen bez. Tagesgeld angepasst werden.
+				tagGeldSatz = 2.2
+				
+				totalDays = Math.round(difference_ms/one_day)+1; //+1 Da am Tag des Reisebeginns auch schon Belege anfallen könnten.
+				
+				if (endMinute > 0) {
+					endHour = endHour-0+1;
+				}
+				
+				if (totalDays == 1) {
+					totalHours = endHour-stHour;
+					if (totalHours >= 12) {
+						expenses = 12*tagGeldSatz;
+					} else {
+						expenses = totalHours*tagGeldSatz;
+					}
+				} else {
+					stTagGeld = 24-stHour;
+					if (stTagGeld > 12) {
+						stTagGeld = 12
+					}
+					
+					endTagGeld = endHour;
+					if (endTagGeld > 12) {
+						endTagGeld = 12;
+					}
+					expenses = (stTagGeld*tagGeldSatz)+(totalDays-2)*(tagGeldSatz*12)+(endTagGeld*tagGeldSatz);
+				}
+				//Math.round wird benötigt, da sonst, warum auch immer, 26,400000000002 angezeigt wird...
+				expenses = Math.round((expenses+0.00001)*100)/100;
+				this.$.expenses.innerHTML = "&#8364 "+expenses;
+				
+				//Umändern des Tab-Namens
+				//this.$.currTravel.innerHTML = 'Derzeitige Reise';
+				//Benötigt noch den Code um zu erfassen, ob das heutige Datum zwischen den Start und Ende Datum liegt
+				
+				//Hier werden die Tage-Felder eingefügt
+				
+				//var tableContent;
+				
+				var i;
+				totalDays += 1;
+				this.$.daytable.innerHTML = '';
+				for (i=1; i < totalDays; i++) {
+					this.$.daytable.innerHTML += '<tr class="dayrow"><td class="day"><p>'+i+'. Tag</p></td>'+
+						'<td class="daybuttons">'+
+						'<paper-button class="toggle" toggle="" raised>Fr&uumlh</paper-button>'+
+						'<paper-button class="toggle" toggle="" raised>Mittag</paper-button>'+
+						'<paper-button class="toggle" toggle="" raised>Abend</paper-button>'+
+						'<paper-button class="toggle" toggle="" raised>N&aumlchtigung</paper-button>'+
+						'</td></tr>';
+				}
+				
+				var location = this.$.location.value;
+				var purpose = this.$.txtPurpose.value;
+				var name = this.$.mitarbeiter.value;
+				
+				console.log(stYear, stMonth, stDay, stHour, stMinute);
+				console.log(endYear, endMonth, endDay, endHour, endMinute);
+				console.log(location, purpose, name, expenses);
+				console.log("Das Speichern in der DB muss noch aktiviert werden!");
+				
+				//Abspeichern in der Datenbank
+				/*dpd.reise.post({"startyear":stYear,"startmonth":stMonth,"startday":stDay,"starthour":stHour,"startminute":stMinute,
+					"endyear":endYear,"endmonth":endMonth,"endday":endDay,"endhour":endHour,"endminute":endMinute,"location":location,
+					"purpose":purpose,"name":name,"expenses":expenses},
+					function(result, err) {
+						if(err) return console.log(err);
+						console.log(result, result.id);
+					}
+				);*/
+			},
+			toggle1: function() {
+				this.$.collapse.toggle();
+			},
+			toggle2: function() {
+				this.$.collapse2.toggle();
+			},
+			toggleUdoReise1: function() {
+				this.$.UdoReise1.toggle();
+			},
+			toggleUdoReise2: function() {
+				this.$.UdoReise2.toggle();
+			},
+			toggleUdoReise3: function() {
+				this.$.UdoReise3.toggle();
+			},
+			toggleLambertReise1: function() {
+				this.$.LambertReise1.toggle();
+			}
 		});
 	</script>	
 </polymer-element>

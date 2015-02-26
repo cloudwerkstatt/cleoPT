@@ -1,9 +1,11 @@
 function SaveTravel() {
-	var stYear = document.getElementById("stYear").value;
-	var stMonth = document.getElementById("stMonth").value;
-	var stDay = document.getElementById("stDay").value;
+	/*var stYear = this.$.stYear.value;
+	var stMonth = document.getElementById("stMonth");
+	var stDay = document.getElementById("stDay");
 	
-	console.log(stYear, stMonth, stDay);
+	alert(stYear);*/
+	
+	console.log(this.$.stYear.value);
 	
 	/*dpd.reise.post({"startyear":stYear,"startmonth":"Oktober","startday":03,"starthour":10,"startminute":10,
 			"endyear":2015,"endmonth":"November","endday":01,"endhour":15,"endminute":00,"location":"Salzburg",

@@ -41,14 +41,14 @@
 						<core-item icon="attachment" label="Option Eins"></core-item>
 						<core-item icon="book" label="Option Zwei"></core-item>
 					</core-submenu>
-					<div style="position:absolute; bottom:10px; text-align:center">
+					<!--<div style="position:absolute; bottom:10px; text-align:center">
 						<h3>Favorite Templates:</h3>
 						<paper-button raised>Reise USA</paper-button>
 						<paper-button raised>Bewirtung</paper-button>
 						<paper-button raised>Parkschein</paper-button>
 						<paper-button raised>Reise Frankreich</paper-button>
 						<paper-button raised>Reise Deutschland</paper-button>
-					</div>
+					</div>-->
 				</core-menu>
 			</core-header-panel>
 		
@@ -59,57 +59,74 @@
 						<paper-tab data-category="currTravel" name="currentTravel" id="currTravel">Neue Reise</paper-tab>
 						<paper-tab data-category="allTravels" name="allTravels">Alle Reisen</paper-tab>
 					</paper-tabs>
+					<span flex></span>
+					<paper-dropdown-menu label="Mitarbeiter" style="font-size: 16px; width: 120px">
+						<paper-dropdown class="dropdown">
+							<core-menu id="ddMitarbeiter" selected="Udo">
+								<paper-item name="Udo" style="color: black">Udo</paper-item><br />
+								<paper-item name="Lambert" style="color: black">Lambert</paper-item><br />
+								<paper-item name="Matthias" style="color: black">Matthias</paper-item>
+							</core-menu>
+						</paper-dropdown>
+					</paper-dropdown-menu>
+					<div style="width: 10px"></div>
 				</core-toolbar>
 					
 				<div class="container" fit layout vertical>
 					<core-pages selected="{{page}}" valueattr="data-category">
 						<section data-category="currTravel">
-							<div style="border-bottom: 1px solid black">
-								Start:
-								<paper-input label="Jahr" id="stYear" style="width: 50px"></paper-input>
-								<paper-input label="Monat" id="stMonth" style="width: 50px"></paper-input>
-								<paper-input label="Tag" id="stDay" style="width: 50px"></paper-input>
-								<br />
-								Uhrzeit:
-								<paper-input label="Stunde" id="stHour" maxlength="2" style="width: 60px"></paper-input>
-								<paper-input label="Minute" id="stMinute" maxlength="2" style="width: 60px"></paper-input>
+							<div>
+							<table style="border-collapse: collapse">
+								<tr>
+									<td>
+										<b>Start:</b>
+										<core-icon icon="today"></core-icon>
+										<paper-input label="Jahr" id="stYear" style="width: 50px"></paper-input>
+										<paper-input label="Monat" id="stMonth" style="width: 50px"></paper-input>
+										<paper-input label="Tag" id="stDay" style="width: 50px"></paper-input>
+										<core-icon icon="query-builder"></core-icon>
+										<paper-input label="Stunde" id="stHour" maxlength="2" style="width: 60px"></paper-input>
+										<paper-input label="Minute" id="stMinute" maxlength="2" style="width: 60px"></paper-input>
+									</td>
+									<td style="padding-left: 20px">
+										<b>Ende:</b>
+										<core-icon icon="today"></core-icon>
+										<paper-input label="Jahr" id="endYear" style="width: 50px"></paper-input>
+										<paper-input label="Monat" id="endMonth" style="width: 50px"></paper-input>
+										<paper-input label="Tag" id="endDay" style="width: 50px"></paper-input>
+										<core-icon icon="query-builder"></core-icon>
+										<paper-input label="Stunde" id="endHour" style="width: 60px"></paper-input>
+										<paper-input label="Minute" id="endMinute" style="width: 60px"></paper-input>
+									</td>
+								</tr>
+							</table>
 							</div>
-							<div style="border-top: 1px solid black; border-bottom: 1px solid black">
-								Ende:
-								<paper-input label="Jahr" id="endYear" style="width: 50px"></paper-input>
-								<paper-input label="Monat" id="endMonth" style="width: 50px"></paper-input>
-								<paper-input label="Tag" id="endDay" style="width: 50px"></paper-input>
-								<br />
-								Uhrzeit:
-								<paper-input label="Stunde" id="endHour" style="width: 60px"></paper-input>
-								<paper-input label="Minute" id="endMinute" style="width: 60px"></paper-input>
-							</div>
-							<div style="border-top: 1px solid black">
+							<div>
 								Ort:
-								<paper-input label="Zielort" id="location"></paper-input>
+								<paper-input label="Zielort" id="location" style="padding-left: 20px"></paper-input>
 							</div>
 							<br />
 							<div>
 								Zweck:<br />
 								<paper-autogrow-textarea id="lblPurpose" rows="3">
-									<textarea id="txtPurpose" style="border: 1px solid black; width: 80%"></textarea>
+									<textarea id="txtPurpose" style="border: 1px solid black; width: 600px"></textarea>
 								</paper-autogrow-textarea>
 							</div>
 							<br />
-							<div>
+							<!--<div>
 								Mitarbeiter:
 								<paper-input label="Name des Mitarbeiters" id="mitarbeiter"></paper-input>
 							</div>
-							<br />
+							<br />-->
+							<!-- Spesen befinden sich nun bei den Felder für die Tage
 							<div>
 								Spesen:
 								<core-label id="expenses">&#8364</core-label>
-							</div>
+							</div>-->
 							
 							<div style="margin-top: 50px">
 								<table class="daytable" id="daytable">
 									<!-- Wird über JS eingefügt!
-									
 									<tr class="dayrow">
 										<td class="day">
 											<p>1. Tag:</p>
@@ -133,7 +150,7 @@
 								</table>
 							</div>
 							<div style="margin-top: 20px; margin-bottom: 20px">
-								<paper-button style="font-size: 16px" on-click="{{saveTravel}}">Reise anlegen</paper-button>
+								<paper-button style="font-size: 16px" on-click="{{saveTravel}}">Speichern</paper-button>
 							</div>
 						</section>
 						
@@ -243,41 +260,21 @@
 									</core-collapse>
 								</div>
 							</core-collapse>
-							
-							<script>
-								
-								//AllTravel()
-							</script>
+							<br />
+							<div class="heading" on-click="{{toggle3}}">
+								Matthias
+							</div>
+							<core-collapse id="collapse3">
+								<div id="divMatthias" class="collapseContent">
+									"innerHTML"
+								</div>
+							</core-collapse>
 						</section>
 					</core-pages>
 				</div>
 			</core-header-panel>
 		</core-drawer-panel>
 	</template>
-	
-	<!-- Script für den Dialog für Beleg oder Grenzüberschreitung
-	<script>
-		var scrope = document.querySelector('template');
-		
-		scope.toggleDialog1 = funtion(e) {
-			if (e.target.localName != 'button') {
-				return;
-			}
-			var d = e.target.nextElementSibling;
-			if (!d) {
-				return;
-			}
-			d.toggle();
-		};
-		
-		scope.transitions = [
-			'core-transition-center',
-			'core-transition-top',
-			'core-transition-bottom',
-			'core-transition-left',
-			'core-transition-right'
-		];
-	</script>-->
 	
 	<script>
 		Polymer({
@@ -312,6 +309,33 @@
 				this.$.endDay.value = dateToday.getDate()+1;
 				this.$.endHour.value = 00;
 				this.$.endMinute.value = 00;
+				
+				//Alle User, welche in der DB eingetragen sind, abrufen
+				dpd.users.get(function (result, err) {
+					if(err) return console.log(err);
+					console.log(result);
+				});
+				
+				this.$.divMatthias.innerHTML = '';
+				
+				//Tab Alle Reisen DB einlesen
+				dpd.reise.get(function (result) {
+					console.log(result);
+					
+					/*Dadurch dass das hier eine Funktion ist, spreche ich mit "this" nicht das richtige Feld an ... Lösung wird gesucht...
+					this.$.MatthiasContent.innerHTML = "";
+					for (i=0; i < result.length; i++) {
+						if (result[i].name == "Matthias") {
+							console.log(result[i].startyear);
+							this.$.MatthiasContent.innerHTML += '<div class="innerHeading" on-click="{{toggleMatthiasReise1}}">'+
+								'<table><tr><td>'+result[i].startyear+'.'+result[i].startmonth+'.'+result[i].startday+' '+
+								result[i].starthour+':'+result[i].startminute+' - '+result[i].endyear+'.'+result[i].endmonth+'.'+result[i].endday+' '+
+								result[i].endhour+':'+result[i].endminute+'</td>'+
+								'<td>'+result[i].location+'</td><td>'+result[i].purpose+'</td><td>'+result[i].expenses+'</td></tr></table></div>';
+						}
+						console.log(result[i].name, result[i].id);
+					}*/
+				});
 			},
 			saveTravel: function() {
 				var stYear, stMonth, stDay, stHour, stMinute;
@@ -348,10 +372,10 @@
 				totalDays = Math.round(difference_ms/one_day)+1; //+1 Da am Tag des Reisebeginns auch schon Belege anfallen könnten.
 				
 				if (endMinute > 0) {
-					endHour = endHour-0+1;
+					endHour = endHour-0+1; //-0 Damit der PC weiß, dass die Variable eine Zahl darstellen soll und keinen Text
 				}
 				
-				if (totalDays == 1) {
+				/*if (totalDays == 1) {
 					totalHours = endHour-stHour;
 					if (totalHours >= 12) {
 						expenses = 12*tagGeldSatz;
@@ -372,53 +396,117 @@
 				}
 				//Math.round wird benötigt, da sonst, warum auch immer, 26,400000000002 angezeigt wird...
 				expenses = Math.round((expenses+0.00001)*100)/100;
-				this.$.expenses.innerHTML = "&#8364 "+expenses;
+				this.$.expenses.innerHTML = "&#8364 "+expenses;*/
 				
 				//Umändern des Tab-Namens
 				//this.$.currTravel.innerHTML = 'Derzeitige Reise';
 				//Benötigt noch den Code um zu erfassen, ob das heutige Datum zwischen den Start und Ende Datum liegt
 				
 				//Hier werden die Tage-Felder eingefügt
-				
-				//var tableContent;
-				
+				/* Funktionierender Code für die Tage-Felder, aber die Tage werden nicht mit dem korrektem Datum versehen, sondern mit 1, 2, 3,...
 				var i;
 				totalDays += 1;
-				this.$.daytable.innerHTML = '';
+				this.$.daytable.innerHTML = '<tr><td colspan="2"></td><td class="daypadding">Di&aumlten</td><td class="daypadding">Spesen</td></tr>';
 				for (i=1; i < totalDays; i++) {
 					this.$.daytable.innerHTML += '<tr class="dayrow"><td class="day"><p>'+i+'. Tag</p></td>'+
 						'<td class="daybuttons">'+
-						'<paper-button class="toggle" toggle="" raised>Fr&uumlh</paper-button>'+
-						'<paper-button class="toggle" toggle="" raised>Mittag</paper-button>'+
-						'<paper-button class="toggle" toggle="" raised>Abend</paper-button>'+
-						'<paper-button class="toggle" toggle="" raised>N&aumlchtigung</paper-button>'+
-						'</td></tr>';
+						'<paper-button class="toggle" toggle="" raised>F</paper-button>'+
+						'<paper-button class="toggle" toggle="" raised>M</paper-button>'+
+						'<paper-button class="toggle" toggle="" raised>A</paper-button>'+
+						'<paper-button class="toggle" toggle="" raised>N</paper-button>'+
+						'<paper-button class="beleg" raised>Beleg</paper-button>'+
+						'</td><td class="daypadding">EUR</td><td class="daypadding">EUR</td></tr>';
 				}
+				this.$.daytable.innerHTML += '<tr style="border-top: 1px solid black"><td colspan="2" style="text-align: right">SUMME</td><td class="daypadding">EUR</td><td class="daypadding">EUR</td></tr>';
+				*/
+				
+				//Fügt die Tage-Felder mit dem entsprechendem Datum ein.
+				this.$.daytable.innerHTML = '<tr><td colspan="2"></td><td class="daypadding">Di&aumlten</td><td class="daypadding">Spesen</td></tr>';
+				//dateEnd_ms += 86400000; //dateEnd_ms wird um einen Tag erhöht, da sonst der letzte Tag nicht miterstellt wird.
+				var rowID = 1; //Gibt den einzelnen Reihen eine Unique ID
+				var dateStart_nohour = new Date(stYear,stMonth-1,stDay,0,0,0); // Wird zum korrekten Erstellen der Felder benötigt
+				var dateStart_nohour_ms = dateStart_nohour.getTime();
+				var diaetGesamtBetrag = 0;
+				
+				while (dateStart_nohour_ms < dateEnd_ms) {
+					var dateVar = new Date(dateStart_nohour_ms);
+					var dateVarMonth = dateVar.getMonth() + 1;
+					
+					var diaetBetrag = 0;
+					if (dateVar.getDate() == dateStart.getDate() && dateVar.getMonth() == dateStart.getMonth()) {
+						diaetBetrag = (24-stHour);
+						if (diaetBetrag > 12) {
+							diaetBetrag = 12;
+						}
+						diaetBetrag *= 2.2;
+					} else if (dateVar.getDate() == dateEnd.getDate() && dateVar.getMonth() == dateEnd.getMonth()) {
+						diaetBetrag = endHour;
+						if (diaetBetrag > 12) {
+							diaetBetrag = 12;
+						}
+						diaetBetrag *= 2.2;
+					} else {
+						diaetBetrag = 26.4;
+					}
+					
+					if (dateStart.getDate() == dateEnd.getDate() && dateStart.getMonth() == dateEnd.getMonth()) {
+						diaetBetrag = endHour-stHour;
+						if (diaetBetrag > 12) {
+							diaetBetrag = 12;
+						}
+						diaetBetrag *= 2.2;
+					}
+					
+					diaetBetrag = Math.round((diaetBetrag+0.00001)*100)/100;
+					diaetGesamtBetrag += diaetBetrag;
+					diaetGesamtBetrag = Math.round((diaetGesamtBetrag+0.00001)*100)/100;
+					
+					this.$.daytable.innerHTML += '<tr class="dayrow"><td class="day"><p>'+dateVar.getDate()+'.'+dateVarMonth+'.</p></td>'+
+						'<td class="daybuttons">'+
+						'<paper-button class="toggle" toggle="" id="fruh'+rowID+'" raised>F</paper-button>'+
+						'<paper-button class="toggle" toggle="" id="mittag'+rowID+'" raised>M</paper-button>'+
+						'<paper-button class="toggle" toggle="" id="abend'+rowID+'" raised>A</paper-button>'+
+						'<paper-button class="toggle" toggle="" id="nacht'+rowID+'" raised>N</paper-button>'+
+						'<paper-button class="beleg" id="beleg'+rowID+'" on-click="{{test}}" raised>Beleg</paper-button>'+
+						'</td><td class="daypadding">'+diaetBetrag+'</td><td class="daypadding">EUR</td></tr>';
+					dateStart_nohour_ms += 86400000;
+					rowID++;
+				}
+				this.$.daytable.innerHTML += '<tr style="border-top: 1px solid black"><td colspan="2" style="text-align: right">SUMME</td><td class="daypadding">'+diaetGesamtBetrag+'</td><td class="daypadding">EUR</td></tr>';
 				
 				var location = this.$.location.value;
 				var purpose = this.$.txtPurpose.value;
-				var name = this.$.mitarbeiter.value;
+				var name = this.$.ddMitarbeiter.selected;
 				
 				console.log(stYear, stMonth, stDay, stHour, stMinute);
 				console.log(endYear, endMonth, endDay, endHour, endMinute);
 				console.log(location, purpose, name, expenses);
-				console.log("Das Speichern in der DB muss noch aktiviert werden!");
+				
+				//console.log("Das Speichern in der DB muss noch aktiviert werden!");
 				
 				//Abspeichern in der Datenbank
-				/*dpd.reise.post({"startyear":stYear,"startmonth":stMonth,"startday":stDay,"starthour":stHour,"startminute":stMinute,
+				dpd.reise.post({"startyear":stYear,"startmonth":stMonth,"startday":stDay,"starthour":stHour,"startminute":stMinute,
 					"endyear":endYear,"endmonth":endMonth,"endday":endDay,"endhour":endHour,"endminute":endMinute,"location":location,
 					"purpose":purpose,"name":name,"expenses":expenses},
 					function(result, err) {
 						if(err) return console.log(err);
 						console.log(result, result.id);
 					}
-				);*/
+				);
 			},
+			
+			test: function() {
+				
+			},
+			
 			toggle1: function() {
 				this.$.collapse.toggle();
 			},
 			toggle2: function() {
 				this.$.collapse2.toggle();
+			},
+			toggle3: function() {
+				this.$.collapse3.toggle();
 			},
 			toggleUdoReise1: function() {
 				this.$.UdoReise1.toggle();
@@ -431,6 +519,9 @@
 			},
 			toggleLambertReise1: function() {
 				this.$.LambertReise1.toggle();
+			},
+			toggleMatthiasReise1: function() {
+				this.$.MatthiasReise1.toggle();
 			}
 		});
 	</script>	

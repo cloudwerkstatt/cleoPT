@@ -96,18 +96,18 @@ html,body {
   
   .daytable {
 	border-collapse: collapse;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
   }
   
   .dayrow {
-	border-top: solid thin;
   }
   
   .day{
 	width: 50px;
 	text-align: center;
+  }
+  
+  .daypadding{
+	padding-left: 15px;
   }
   
   .daybuttons {
@@ -124,6 +124,6 @@ html,body {
       width: 650px;
     }
     .container {
-      width: 400px;
+      width: ;
     }
   }
